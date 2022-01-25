@@ -7,10 +7,19 @@
     <title>Crear Persona</title>
 </head>
 <body>
+    @if($errors->any())
+    <div>
+        <ul>
+            @foreach($errors->all() as $error)
+            <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <form action="{{url('crear')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <p>Nombre</p>
-        <input type="text" name="nombre_persona">
+        <input type="text" name="nombre_persona" value="{{old('nombre_persona')}}">
         @error('nombre_persona')
         <br>
         {{$message}}

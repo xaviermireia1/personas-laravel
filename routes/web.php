@@ -31,3 +31,5 @@ Route::get("logout",[PersonaController::class,'logout']);
 /*CORREO*/
 Route::get("correoPersona/{correo_persona}",[PersonaController::class,'correoPersona2']);
 Route::post("recibirCorreo",[PersonaController::class,'correoPersona']);
+/*PAGAR PAYPAL*/
+Route::get("enviarDinero/{precio}",[PersonaController::class,'enviarDinero']);

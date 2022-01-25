@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\MAIL;
 use App\Mail\EnviarMensaje;
+use App\Http\Requests\PersonaCrear;
 
 class PersonaController extends Controller
 {
@@ -26,7 +27,7 @@ class PersonaController extends Controller
     public function crearPersonas(){
         return view('crear');
     }
-    public function crearPersonasPost(Request $request){
+    public function crearPersonasPost(PersonaCrear $request){
         $datos = $request->except('_token');
         $request->validate([
             'nombre_persona'=>'required|string|max:30',
@@ -132,6 +133,10 @@ class PersonaController extends Controller
     }
     public function correoPersona2($correo_persona){
         return view('mostrarCorreo',compact('correo_persona'));
+    }
+    /*Enviar money*/
+    public function enviarDinero($precio){
+        return $precio;
     }
     public function index()
     {
